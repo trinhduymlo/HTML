@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo for Angular App Lifecycle</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="xetDiem" ng-controller="xetDiemController">
+    <div>
+        <label>Điểm lý thuyết</label>
+        <input type="number" ng-model="dLythuyet"  required>
+    </div>
+    <div>
+       <label>Điểm thực hành:</label>
+        <input type="number" ng-model="dThuchanh"  required> </div>
+    <div>
+        <label><b>Kết quả: </b>{{kqDiem}}</label>
+    </div>
+    <div>
+        <button class="btn" ng-click="kqRun()">Kết quả</button>
+    </div>
+    <script>
+        var app = angular.module('xetDiem', []);
+        app.controller('xetDiemController', function ($scope){
+            $scope.kqĐiem = "unknown";
+            $scope.kqRun = "Đạt";
+            $scope.kqRun = function(){
+               if(this.dLythuyet >= 5 && this.dThuchanh >= 5){
+                   $scope.kqDiem = "Đạt";
+               }
+               else {
+                   $scope.kqDiem = "Không đạt";
+               }
+            };
+        });
+    </script>
+</div>
+</body>
+</html>
