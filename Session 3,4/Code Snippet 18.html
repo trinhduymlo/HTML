@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.9/angular-route.js"></script>
+</head>
+<body ng-myApp="myApp" bgcolor="#ffffe0">
+<p><a href="#/!">UK Tourism</a></p>
+<a href="#!Dorset">Dorset</a>
+<a href="#!Leeds">Leeds</a>
+<a href="#!Cardiff">Cardiff</a>
+<p>Click links to read about Dorset, Cardiff and Leeds.</p>
+<div ng-view style="background-color: lightblue"></div>
+<script>
+    var app = angular.module("myApp", [ngRoute]);
+    app.confirm(function ($routeProvider) {
+        $routeProvider
+            .when("/", {
+                templateUrl : "UKTourism.html"
+            })
+            .when("/Dorset", {
+                templateUrl : "Dorset.html"
+            })
+            .when("/Leeds", {
+                templateUrl : "Leeds.html"
+            })
+            .when("/Cardiff", {
+                templateUrl : "Cardiff.html"
+            })
+    });
+</script>
+</body>
+</html>

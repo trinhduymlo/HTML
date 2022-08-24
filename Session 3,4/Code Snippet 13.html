@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js">
+    </script>
+</head>
+<body ng-app="myApp">
+    <h1>AngularJS Currency Filter</h1>
+    <div ng-controller="myController">
+        Default Currency : {{person.salary | currency}}<br/>
+        Custom Currency Identifier: {{person.salary | currency: 'Euro.'}}
+        Without Fraction: {{person.salary | currency: 'Euro':0}}<br/>
+        Two Decimal Fraction: <span ng-bind="person.salary | currency: 'GB':2"></span>
+    </div>
+    <script>
+        var myApp = angular.module('myApp', []);
+        myApp.controller("myController", function ($scope){
+        $scope.person = {salary: 100000}
+        });
+    </script>
+</body>
+</html>
