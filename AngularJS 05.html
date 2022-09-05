@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js" integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+<center>
+    <h1 style="color:#236773;">
+        CodeLean.vn
+    </h1>
+    <h3>
+        Filter input text ng-repeat
+        values according to ng-model
+    </h3>
+</center>
+<div ng-app="app1" ng-controller="controller1">
+    <p>
+        Type a programming language
+        name in the input field:
+    </p>
+    <p>
+        <input type="text" ng-model="testfilter">
+    </p>
+    <p>
+        Filter shows the names of only the
+        mathing programming language after
+        capitalizing each language by
+        applying filter.
+    </p>
+    <ul>
+        <li ng-repeat="x in programminglanguagenames | filter:testfilter">
+            {{ x |myFilter}}
+        </li>
+    </ul>
+</div>
+
+<script>
+    var app = angular.module('app1', []);
+    app.filter('myFilter', function () {
+        return function (x) {
+            var i, c, txt = "";
+            for (i = 0; i < x.length; i++) {
+                c = x[i];
+                c = c.toUpperCase();
+                txt += c;
+            }
+            return txt;
+        };
+    });
+
+    app.controller('controller1', function ($scope) {
+        $scope.programminglanguagenames = [
+            'cobol',
+            'pascal',
+            'ruby',
+            'php',
+            'perl',
+            'python',
+            'c',
+            'c++',
+            'java',
+            'html',
+            'javascript',
+            'basic',
+            'lisp',
+            'smalltalk',
+            'bootstrap',
+    ];
+});
+</script>
+</body>
+</html>
